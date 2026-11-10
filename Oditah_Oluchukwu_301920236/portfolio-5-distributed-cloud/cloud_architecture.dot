@@ -1,0 +1,22 @@
+digraph CloudArchitecture {
+ graph [rankdir=TB, splines=ortho, nodesep=0.45, ranksep=0.65, bgcolor="white", pad=0.2];
+ node [shape=box, style="rounded,filled", fillcolor="#F3F7FB", color="#38506A", fontname="Helvetica", fontsize=10, margin="0.16,0.10"];
+ edge [color="#52677C", fontname="Helvetica", fontsize=9, arrowsize=0.8];
+ channels [label="Mobile and Web Channels"];
+ alb [label="Application Load Balancer"];
+ api [label="Stateless API / Transfer Service"];
+ writer [label="PostgreSQL Writer Endpoint", fillcolor="#E4EEF9"];
+ standby [label="Multi-AZ Standby"];
+ reader [label="Read Replica / Reader Endpoint"];
+ events [label="Outbox / Event Publisher"];
+ analytics [label="Notifications and Analytics"];
+ backups [label="Automated Backups / PITR"];
+ dr [label="Cross-Region Recovery Copy"];
+ reports [label="Statements and Operations Reports"];
+ channels -> alb -> api -> writer;
+ writer -> standby [label="synchronous HA replication"];
+ writer -> reader [label="managed read replication"];
+ api -> events -> analytics;
+ writer -> backups -> dr;
+ reader -> reports;
+}

@@ -1,0 +1,59 @@
+# MIT 8103 Advanced Database Systems - Practical Portfolio
+
+**Case study:** Meridian Digital Bank (simulated)  
+**Student:** Oditah Oluchukwu Michael  
+**Student ID:** 301920236  
+**Assessment:** First Semester Continuous Assessment, 2026/2027  
+**Course:** MIT 8103 - Advanced Database Systems
+
+> Important: This repository is a prepared practical portfolio package. Paste the real GitHub URL in the final report, execute the MongoDB script and any desired PostgreSQL deployment test, review the evidence, and make your own progressive GitHub commits before submission. Do not claim that an environment-dependent deployment was executed when it was not.
+
+## Case study
+Meridian Digital Bank is a fictional Nigerian digital banking scenario. The database supports customer onboarding, account management, account-to-account transfers, double-entry ledger posting, account statements and audit trails. All sample data are synthetic.
+
+## Repository structure
+- `portfolio-1-database-design/` - ER diagram, SQLite reference schema, PostgreSQL schema, seed script and normalisation.
+- `portfolio-2-query-optimisation/` - SQL examples, query-plan/performance script and captured local evidence.
+- `portfolio-3-transactions-concurrency/` - commit, rollback, insufficient-funds and writer-lock demo; PostgreSQL row-locking script.
+- `portfolio-4-nosql/` - MongoDB document model, JSON sample documents, `mongosh` implementation and validation note.
+- `portfolio-5-distributed-cloud/` - managed-cloud architecture, replication, partitioning, consistency, security and recovery design, plus a rendered architecture diagram.
+- `documentation/` - final summary, reflection guide, AI-use declaration and references.
+- `data/` - generated SQLite database containing synthetic data (recreated by the seed script).
+- `evidence/` - overall test log.
+
+## Local run instructions
+Requires Python 3.10+ and only the Python standard library for the relational demo.
+
+From the repository root:
+
+```bash
+python portfolio-1-database-design/seed_data.py
+python portfolio-2-query-optimisation/performance_demo.py
+python portfolio-3-transactions-concurrency/transaction_demo.py
+```
+
+Or run all local relational steps in one command:
+
+```bash
+python run_portfolio.py
+```
+
+The scripts recreate a local SQLite database and write evidence under the relevant `evidence/` folders. They use synthetic data only. The query-plan timing is a small local benchmark, not a production capacity claim.
+
+## MongoDB run instructions
+Use MongoDB Community Server with a replica set or MongoDB Atlas test cluster, then open `mongosh` and run:
+
+```javascript
+load("portfolio-4-nosql/mongodb_implementation.js")
+```
+
+Save genuine screenshots of collection contents, index definitions, `explain("executionStats")` output and the transaction commit. MongoDB transactions require a replica set or sharded cluster. The script has not been executed in the authoring environment because MongoDB binaries/service were unavailable.
+
+## PostgreSQL run instructions
+Create a test database, run `portfolio-1-database-design/schema_postgresql.sql`, load representative data, then adapt and execute `portfolio-3-transactions-concurrency/transactions_postgresql.sql`. Capture `EXPLAIN (ANALYZE, BUFFERS)` output for the account statement query. The PostgreSQL SQL is supplied as a deployment equivalent but was not run in the authoring environment.
+
+## GitHub submission preparation
+Create a **private** GitHub repository named `mit-8103-advanced-database-portfolio`, push this folder, and grant the assessor the access required by the LMS instructions. Paste the actual repository URL into `documentation/final_portfolio_summary.docx` and `.pdf` before submission. Keep making meaningful commits as you personally review and test the work; a single upload at the end does not demonstrate progressive development.
+
+## Academic integrity
+The work must be understood, verified and explained by the student. The AI-use declaration in `documentation/ai_use_declaration.md` transparently records how AI assistance was used. Update it to match what you actually reviewed, corrected and tested. Follow the university's academic integrity rules and cite all external resources.

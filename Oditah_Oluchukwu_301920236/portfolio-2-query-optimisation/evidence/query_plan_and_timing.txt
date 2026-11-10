@@ -1,0 +1,16 @@
+MERIDIAN DIGITAL BANK - QUERY OPTIMISATION EVIDENCE
+Rows returned by account statement query: 100
+Total ledger rows in benchmark table: 24000
+
+BEFORE COMPOSITE INDEX
+  SCAN ledger_entries
+  USE TEMP B-TREE FOR ORDER BY
+Median of 150 local executions: 0.9649 ms
+
+AFTER COMPOSITE COVERING INDEX
+  SEARCH ledger_entries USING COVERING INDEX idx_ledger_account_posted (account_id=? AND posted_at>? AND posted_at<?)
+Median of 150 local executions: 0.0534 ms
+
+INTERPRETATION
+The before plan should scan ledger_entries. The after plan should search using idx_ledger_account_posted; the selected columns are included in the index, so SQLite may label it a covering-index search.
+Timing is a local micro-benchmark on a synthetic dataset and is not a production performance guarantee. Cache state, host hardware, SQLite version and dataset size affect timings.

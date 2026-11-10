@@ -1,0 +1,147 @@
+MIT 8103 - MONGODB IMPLEMENTATION EVIDENCE
+==========================================
+Replica Set: rs0
+
+CUSTOMER PROFILES
+[
+  {
+    _id: 'CUS0001',
+    customerId: 'CUST0001',
+    name: {
+      first: 'Amina',
+      last: 'Demo'
+    },
+    contact: {
+      email: 'amina@example.test',
+      phone: '08000000001'
+    },
+    kyc: {
+      status: 'VERIFIED',
+      level: 2
+    },
+    accountSummaries: [
+      {
+        accountId: 'ACC0001',
+        maskedNumber: '********0001',
+        type: 'SAVINGS',
+        currency: 'NGN',
+        status: 'ACTIVE'
+      }
+    ],
+    recentTransfers: [],
+    updatedAt: ISODate('2026-11-10T15:01:42.166Z')
+  },
+  {
+    _id: 'CUS0002',
+    customerId: 'CUST0002',
+    name: {
+      first: 'Tunde',
+      last: 'Demo'
+    },
+    contact: {
+      email: 'tunde@example.test',
+      phone: '08000000002'
+    },
+    kyc: {
+      status: 'VERIFIED',
+      level: 2
+    },
+    accountSummaries: [
+      {
+        accountId: 'ACC0002',
+        maskedNumber: '********0002',
+        type: 'CURRENT',
+        currency: 'NGN',
+        status: 'ACTIVE'
+      }
+    ],
+    recentTransfers: [],
+    updatedAt: ISODate('2026-11-10T15:01:42.166Z')
+  }
+]
+
+ACCOUNT BALANCES
+[
+  {
+    _id: 'ACC0001',
+    accountId: 'ACC0001',
+    customerId: 'CUST0001',
+    balanceKobo: 99975000,
+    currency: 'NGN',
+    status: 'ACTIVE'
+  },
+  {
+    _id: 'ACC0002',
+    accountId: 'ACC0002',
+    customerId: 'CUST0002',
+    balanceKobo: 100025000,
+    currency: 'NGN',
+    status: 'ACTIVE'
+  }
+]
+
+TRANSFER EVENTS
+[
+  {
+    _id: 'TRF-DOC-001',
+    reference: 'MERIDIAN-DEMO-001',
+    customerId: 'CUST0001',
+    debitAccountId: 'ACC0001',
+    creditAccountId: 'ACC0002',
+    amountKobo: 25000,
+    currency: 'NGN',
+    status: 'COMPLETED',
+    createdAt: ISODate('2026-11-10T15:01:42.560Z'),
+    metadata: {
+      channel: 'MOBILE',
+      narration: 'Demo transfer'
+    }
+  }
+]
+
+LEDGER ENTRIES
+[
+  {
+    _id: ObjectId('6af331d67b8726713c1ad7af'),
+    transferId: 'TRF-DOC-001',
+    accountId: 'ACC0001',
+    direction: 'DEBIT',
+    amountKobo: 25000,
+    postedAt: ISODate('2026-11-10T15:01:42.562Z')
+  },
+  {
+    _id: ObjectId('6af331d67b8726713c1ad7b0'),
+    transferId: 'TRF-DOC-001',
+    accountId: 'ACC0002',
+    direction: 'CREDIT',
+    amountKobo: 25000,
+    postedAt: ISODate('2026-11-10T15:01:42.562Z')
+  }
+]
+
+INDEXES
+[
+  {
+    v: 2,
+    key: {
+      _id: 1
+    },
+    name: '_id_'
+  },
+  {
+    v: 2,
+    key: {
+      reference: 1
+    },
+    name: 'reference_1',
+    unique: true
+  },
+  {
+    v: 2,
+    key: {
+      customerId: 1,
+      createdAt: -1
+    },
+    name: 'customerId_1_createdAt_-1'
+  }
+]

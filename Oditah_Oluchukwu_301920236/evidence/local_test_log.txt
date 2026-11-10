@@ -1,0 +1,11 @@
+MIT 8103 - LOCAL RELATIONAL PORTFOLIO TEST LOG
+Environment: Python standard library sqlite3; SQLite database file data/meridian_bank.db.
+All records are synthetic; no real customer or bank information is used.
+Seed operation: {'database': './data/meridian_bank.db', 'customers': 120, 'accounts': 120, 'transfers': 12000, 'ledger_entries': 24000, 'branches': 3, 'synthetic_data': True}
+Record counts after seed and transaction demo: {'branches': 3, 'customers': 120, 'accounts': 120, 'transfers': 12001, 'ledger_entries': 24002, 'audit_logs': 122}
+Foreign-key check rows: 0 (0 expected)
+Double-entry transfer check violations: 0 (0 expected)
+Total account balances in kobo: 12000000000 (opening balances preserved in aggregate)
+PRAGMA integrity_check: ok
+Query optimisation and transaction evidence are stored in the respective portfolio folders.
+Limitations: MongoDB commands were not executed because mongosh/server were unavailable; PostgreSQL SQL was not executed because a PostgreSQL server was unavailable; cloud topology was designed but not provisioned.

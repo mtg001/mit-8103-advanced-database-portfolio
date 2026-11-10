@@ -1,0 +1,35 @@
+MIT 8103 - LOCAL RELATIONAL PORTFOLIO TEST LOG
+Environment: Python standard library sqlite3; SQLite database file data/meridian_bank.db.
+All records are synthetic; no real customer or bank information is used.
+Seed operation: {'database': './data/meridian_bank.db', 'customers': 120, 'accounts': 120, 'transfers': 12000, 'ledger_entries': 24000, 'branches': 3, 'synthetic_data': True}
+Record counts after seed and transaction demo: {'branches': 3, 'customers': 120, 'accounts': 120, 'transfers': 12001, 'ledger_entries': 24002, 'audit_logs': 122}
+Foreign-key check rows: 0 (0 expected)
+Double-entry transfer check violations: 0 (0 expected)
+Total account balances in kobo: 12000000000 (opening balances preserved in aggregate)
+PRAGMA integrity_check: ok
+Query optimisation and transaction evidence are stored in the respective portfolio folders.
+Limitations: MongoDB commands were not executed because mongosh/server were unavailable; PostgreSQL SQL was not executed because a PostgreSQL server was unavailable; cloud topology was designed but not provisioned.
+
+MERIDIAN DIGITAL BANK - QUERY OPTIMISATION EVIDENCE
+Rows returned by account statement query: 100
+Total ledger rows in benchmark table: 24000
+
+BEFORE COMPOSITE INDEX
+  SCAN ledger_entries
+  USE TEMP B-TREE FOR ORDER BY
+Median of 150 local executions: 0.9349 ms
+
+AFTER COMPOSITE COVERING INDEX
+  SEARCH ledger_entries USING COVERING INDEX idx_ledger_account_posted (account_id=? AND posted_at>? AND posted_at<?)
+Median of 150 local executions: 0.0586 ms
+
+INTERPRETATION
+The before plan should scan ledger_entries. The after plan should search using idx_ledger_account_posted; the selected columns are included in the index, so SQLite may label it a covering-index search.
+Timing is a local micro-benchmark on a synthetic dataset and is not a production performance guarantee. Cache state, host hardware, SQLite version and dataset size affect timings.
+
+MERIDIAN DIGITAL BANK - TRANSACTION AND CONCURRENCY EVIDENCE
+COMMIT: transfer TRF-DEMO-C77D0CE8E6FB committed; debit account reduced by 25000 kobo: 99486335 -> 99461335
+ROLLBACK: staged 1000-kobo debit/credit was rolled back; balances unchanged (99461335=99461335; 101135404=101135404)
+REJECTION: Insufficient funds; transaction rolled back
+CONCURRENCY: second writer was blocked/rejected while first writer held BEGIN IMMEDIATE (database is locked)
+ISOLATION NOTE: SQLite uses serialised writes; this local lock test is not a PostgreSQL MVCC test. The PostgreSQL example uses SELECT ... FOR UPDATE and documents row-level locking.
