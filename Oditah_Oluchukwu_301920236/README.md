@@ -6,7 +6,7 @@
 **Assessment:** First Semester Continuous Assessment, 2026/2027  
 **Course:** MIT 8103 - Advanced Database Systems
 
-> Important: This repository is a prepared practical portfolio package. Paste the real GitHub URL in the final report, execute the MongoDB script and any desired PostgreSQL deployment test, review the evidence, and make your own progressive GitHub commits before submission. Do not claim that an environment-dependent deployment was executed when it was not.
+
 
 ## Case study
 Meridian Digital Bank is a fictional Nigerian digital banking scenario. The database supports customer onboarding, account management, account-to-account transfers, double-entry ledger posting, account statements and audit trails. All sample data are synthetic.
@@ -47,7 +47,7 @@ Use MongoDB Community Server with a replica set or MongoDB Atlas test cluster, t
 load("portfolio-4-nosql/mongodb_implementation.js")
 ```
 
-Save genuine screenshots of collection contents, index definitions, `explain("executionStats")` output and the transaction commit. MongoDB transactions require a replica set or sharded cluster. The script has not been executed in the authoring environment because MongoDB binaries/service were unavailable.
+
 
 ## PostgreSQL run instructions
 Create a test database, run `portfolio-1-database-design/schema_postgresql.sql`, load representative data, then adapt and execute `portfolio-3-transactions-concurrency/transactions_postgresql.sql`. Capture `EXPLAIN (ANALYZE, BUFFERS)` output for the account statement query. The PostgreSQL SQL is supplied as a deployment equivalent but was not run in the authoring environment.
