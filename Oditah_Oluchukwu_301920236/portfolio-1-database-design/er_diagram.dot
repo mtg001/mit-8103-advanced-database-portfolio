@@ -1,0 +1,17 @@
+digraph MeridianER {
+ graph [rankdir=LR, splines=ortho, nodesep=0.55, ranksep=0.9, bgcolor="white", pad=0.2];
+ node [shape=record, style="rounded,filled", fillcolor="#F5F8FC", color="#38506A", fontname="Helvetica", fontsize=10, margin="0.12,0.08"];
+ edge [color="#52677C", fontname="Helvetica", fontsize=9, arrowsize=0.8];
+ branches [label="{BRANCHES|PK branch_id\lbranch_name\lcity\lstate\l}"];
+ customers [label="{CUSTOMERS|PK customer_id\lfirst_name\llast_name\lemail UQ\lphone UQ\lcreated_at\l}"];
+ accounts [label="{ACCOUNTS|PK account_id\lFK customer_id\lFK branch_id\laccount_number UQ\laccount_type\lcurrency\lbalance_kobo\lstatus\lopened_at\l}"];
+ transfers [label="{TRANSFERS|PK transfer_id\lreference UQ\lFK debit_account_id\lFK credit_account_id\lamount_kobo\lcurrency / status\linitiated_at / completed_at\l}"];
+ ledger [label="{LEDGER_ENTRIES|PK entry_id\lFK transfer_id\lFK account_id\ldirection\lamount_kobo\lposted_at\l}"];
+ audit [label="{AUDIT_LOGS|PK audit_id\lentity_type\lentity_id\laction\levent_time\ldetails\l}"];
+ customers -> accounts [label="1 to many"];
+ branches -> accounts [label="1 to many"];
+ accounts -> transfers [label="debit / credit account", dir=both, arrowtail=none];
+ transfers -> ledger [label="1 to 2+ entries"];
+ accounts -> ledger [label="1 to many"];
+ accounts -> audit [label="audited changes", style=dashed];
+}

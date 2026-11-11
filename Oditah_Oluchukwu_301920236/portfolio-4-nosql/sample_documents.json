@@ -1,0 +1,117 @@
+{
+  "customer_profiles": [
+    {
+      "_id": "CUS0001",
+      "customerId": "CUST0001",
+      "name": {
+        "first": "Amina",
+        "last": "Demo"
+      },
+      "contact": {
+        "email": "amina@example.test",
+        "phone": "08000000001"
+      },
+      "kyc": {
+        "status": "VERIFIED",
+        "level": 2
+      },
+      "accountSummaries": [
+        {
+          "accountId": "ACC0001",
+          "maskedNumber": "********0001",
+          "type": "SAVINGS",
+          "currency": "NGN",
+          "status": "ACTIVE"
+        }
+      ],
+      "recentTransfers": [
+        {
+          "reference": "MERIDIAN-DEMO-001",
+          "direction": "OUTGOING",
+          "amountKobo": 25000,
+          "status": "COMPLETED",
+          "createdAt": "2026-10-01T10:00:00Z"
+        }
+      ],
+      "updatedAt": "2026-10-01T10:00:00Z"
+    },
+    {
+      "_id": "CUS0002",
+      "customerId": "CUST0002",
+      "name": {
+        "first": "Tunde",
+        "last": "Demo"
+      },
+      "contact": {
+        "email": "tunde@example.test",
+        "phone": "08000000002"
+      },
+      "kyc": {
+        "status": "VERIFIED",
+        "level": 2
+      },
+      "accountSummaries": [
+        {
+          "accountId": "ACC0002",
+          "maskedNumber": "********0002",
+          "type": "CURRENT",
+          "currency": "NGN",
+          "status": "ACTIVE"
+        }
+      ],
+      "recentTransfers": [],
+      "updatedAt": "2026-10-01T10:00:00Z"
+    }
+  ],
+  "transfer_events": [
+    {
+      "_id": "TRF-DOC-001",
+      "reference": "MERIDIAN-DEMO-001",
+      "customerId": "CUST0001",
+      "debitAccountId": "ACC0001",
+      "creditAccountId": "ACC0002",
+      "amountKobo": 25000,
+      "currency": "NGN",
+      "status": "COMPLETED",
+      "createdAt": "2026-10-01T10:00:00Z",
+      "metadata": {
+        "channel": "MOBILE",
+        "narration": "Demo transfer"
+      }
+    }
+  ],
+  "accounts": [
+    {
+      "_id": "ACC0001",
+      "accountId": "ACC0001",
+      "customerId": "CUST0001",
+      "balanceKobo": 100000000,
+      "currency": "NGN",
+      "status": "ACTIVE"
+    },
+    {
+      "_id": "ACC0002",
+      "accountId": "ACC0002",
+      "customerId": "CUST0002",
+      "balanceKobo": 100000000,
+      "currency": "NGN",
+      "status": "ACTIVE"
+    }
+  ],
+  "ledger_entries": [
+    {
+      "transferId": "TRF-DOC-001",
+      "accountId": "ACC0001",
+      "direction": "DEBIT",
+      "amountKobo": 25000,
+      "postedAt": "2026-10-01T10:00:00Z"
+    },
+    {
+      "transferId": "TRF-DOC-001",
+      "accountId": "ACC0002",
+      "direction": "CREDIT",
+      "amountKobo": 25000,
+      "postedAt": "2026-10-01T10:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+flowchart LR
+  C[Mobile and Web Channels] --> ALB[Application Load Balancer]
+  ALB --> API[Stateless API / Transfer Service]
+  API --> W[(PostgreSQL Writer Endpoint)]
+  W -. synchronous HA replication .-> S[(Multi-AZ Standby)]
+  W -. asynchronous / managed read replication .-> R[(Read Replica / Reader Endpoint)]
+  API --> OUT[Outbox / Event Publisher]
+  OUT --> EVT[Notifications and Analytics]
+  W --> BK[(Automated Backups / PITR)]
+  BK --> DR[(Cross-Region Recovery Copy)]
+  R --> DASH[Statements and Operations Reports]

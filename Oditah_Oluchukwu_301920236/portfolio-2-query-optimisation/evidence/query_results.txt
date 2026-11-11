@@ -1,0 +1,11 @@
+CUSTOMER ACCOUNT SUMMARY (CUST0001)
+customer_id | first_name | last_name | account_no | type | balance_kobo | currency | status
+CUST0001 | Customer1 | Demo | 1000000001 | SAVINGS | 99461335 | NGN | ACTIVE
+
+LATEST 5 LEDGER ENTRIES (ACC0001)
+entry_id | direction | amount_kobo | posted_at
+24001 | DEBIT | 25000 | 2026-11-10T11:10:25+00:00
+283 | DEBIT | 93795 | 2026-09-29T12:10:55
+17415 | DEBIT | 87002 | 2026-09-25T15:40:08
+7840 | CREDIT | 78041 | 2026-09-25T02:32:08
+625 | DEBIT | 56116 | 2026-09-24T04:21:31
