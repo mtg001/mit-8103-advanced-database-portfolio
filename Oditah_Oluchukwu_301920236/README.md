@@ -43,21 +43,5 @@ python run_portfolio.py
 
 The scripts recreate a local SQLite database and write evidence under the relevant `evidence/` folders. They use synthetic data only. The query-plan timing is a small local benchmark, not a production capacity claim.
 
- MongoDB run instructions
-Use MongoDB Community Server with a replica set or a MongoDB Atlas test cluster, then open `mongosh` and run:
 
-```javascript
-load("portfolio-4-nosql/mongodb_implementation.js")
-```
-
-Save genuine screenshots of collection contents, index definitions, `explain("executionStats")` output, and the transaction commit. MongoDB transactions require a replica set or sharded cluster. The script has not been executed in the authoring environment because MongoDB binaries/service were unavailable.
-
- PostgreSQL run instructions
-Create a test database, run `portfolio-1-database-design/schema_postgresql.sql`, load representative data, then adapt and execute `portfolio-3-transactions-concurrency/transactions_postgresql.sql`. Capture `EXPLAIN (ANALYZE, BUFFERS)` output for the account statement query. The PostgreSQL SQL is supplied as a deployment equivalent but was not run in the authoring environment.
-
- GitHub submission preparation
-Create a **private** GitHub repository named `mit-8103-advanced-database-portfolio`, push this folder, and grant the assessor the access required by the LMS instructions. Paste the actual repository URL into `documentation/final_portfolio_summary.docx` and `.pdf` before submission. Keep making meaningful commits as you personally review and test the work; a single upload at the end does not demonstrate progressive development.
-
- Academic integrity
-The work must be understood, verified, and explained by the student. The AI-use declaration in `documentation/ai_use_declaration.md` transparently records how AI assistance was used. Update it to match what you actually reviewed, corrected, and tested. Follow the university's academic integrity rules and cite all external resources.
 
