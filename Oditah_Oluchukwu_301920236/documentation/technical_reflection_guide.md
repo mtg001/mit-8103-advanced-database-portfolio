@@ -1,7 +1,6 @@
  Individual technical reflection 
 
 
-Address these points in first person:
 1. Why I selected a relational database
 
 I selected a relational database for the core banking operations because account balances, transfers, and ledger entries require accuracy and consistency. A transfer involves more than one account, and both sides of the transaction must be recorded correctly. PostgreSQL and SQLite support transactions that allow related changes to be committed together or rolled back if something goes wrong.
