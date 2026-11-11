@@ -1,9 +1,17 @@
-# AI Use Declaration
+ AI Use Declaration
 
-**AI tool used:** ChatGPT (OpenAI).
+AI tool used: ChatGPT (OpenAI).
 
-**Purpose of use:** Assistance was used to structure the portfolio, draft explanatory documentation, generate example SQL/Python/MongoDB scripts, propose the simulated banking case study, and help organise test evidence.
+Purpose of use: I used ChatGPT to assist with structuring the practical portfolio, drafting explanatory documentation, understanding database concepts, troubleshooting errors, and organising the evidence.
 
-**Student review and verification:** The student must review every script and explanation, execute the local SQLite workflow, run the MongoDB implementation against a replica-set test environment, and perform any PostgreSQL/cloud tests claimed in the final submission. The student must correct any errors found, understand the design choices, and replace this statement with an accurate account of what was actually reviewed, modified and tested before submission.
+My review, execution and verification: I reviewed the project materials and carried out practical testing on my local computer. I executed the SQLite portfolio workflow, including database design, query optimisation, transaction commit and rollback tests, and the concurrency demonstration.
 
-**Limitations disclosed:** The local SQLite scripts were executed in the authoring environment. MongoDB Server/`mongosh`, PostgreSQL Server and an AWS account were not available there; the respective scripts and cloud architecture are supplied as implementation/deployment materials but are not represented as having been executed or deployed.
+I also configured and used a local MongoDB replica set environment. I verified the collections, indexes, and query execution statistics and captured screenshots of the results.
+
+For PostgreSQL, I loaded the supplied schema into a dedicated test database, inserted synthetic test records, executed the supplied banking transfer transaction, and verified the resulting account balances, transfer record, and ledger entries.
+
+I reviewed and updated the evidence documentation to reflect the tests I actually performed. AI-generated material was used as assistance and was not treated as a substitute for my own review, execution, and understanding.
+
+Limitations disclosed: The distributed/cloud architecture portfolio is a design and deployment proposal. I did not deploy the architecture to AWS or claim to have tested a live cloud environment. The database results are based on synthetic data and local testing, not a live banking production system.
+
+Declaration: I acknowledge the use of AI assistance and take responsibility for reviewing the submitted work, understanding its contents, and ensuring that the reported results accurately reflect the work I performed.

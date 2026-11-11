@@ -4,3 +4,20 @@ ROLLBACK: staged 1000-kobo debit/credit was rolled back; balances unchanged (994
 REJECTION: Insufficient funds; transaction rolled back
 CONCURRENCY: second writer was blocked/rejected while first writer held BEGIN IMMEDIATE (database is locked)
 ISOLATION NOTE: SQLite uses serialised writes; this local lock test is not a PostgreSQL MVCC test. The PostgreSQL example uses SELECT ... FOR UPDATE and documents row-level locking.
+
+POSTGRESQL TRANSACTION EVIDENCE
+
+DATABASE: mit8103_portfolio
+TRANSFER: TRF-PG-DEMO-001
+REFERENCE: PG-DEMO-001
+STATUS: COMPLETED
+ISOLATION LEVEL: READ COMMITTED
+ROW LOCKING: SELECT FOR UPDATE
+
+DEBIT: ACC0001 reduced from 10000000 to 9975000 kobo (NGN 100000 to NGN 99750).
+CREDIT: ACC0002 increased from 5000000 to 5025000 kobo (NGN 50000 to NGN 50250).
+
+LEDGER: One DEBIT and one matching CREDIT entry of 25000 kobo each.
+RESULT: Transaction committed successfully. Final balances and ledger entries verified.
+
+SCREENSHOT: postgresql_transaction_evidence.png

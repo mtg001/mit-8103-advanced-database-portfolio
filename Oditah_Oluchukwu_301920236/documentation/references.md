@@ -8,4 +8,4 @@
 6. PostgreSQL Global Development Group. (n.d.). *Explicit locking*. https://www.postgresql.org/docs/17/explicit-locking.html
 7. PostgreSQL Global Development Group. (n.d.). *Transaction isolation*. https://www.postgresql.org/docs/15/transaction-iso.html
 
-Accessed 10 November 2026. Review the version-specific documentation for the database version selected for your own test deployment.
+
